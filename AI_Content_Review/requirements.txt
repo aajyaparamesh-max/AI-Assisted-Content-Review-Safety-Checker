@@ -15,5 +15,3 @@ gdown>=5.0.0
 sentencepiece
 scipy
 pathlib
-re 
-string
