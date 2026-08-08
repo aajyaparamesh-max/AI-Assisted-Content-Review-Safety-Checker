@@ -77,38 +77,38 @@ if st.button("🔍 Analyze Content", use_container_width=True):
                 else:
                     st.error("🚨 TOXIC COMMENT DETECTED")
 
-                # Detected Labels
-                st.subheader("Detected Labels")
-
-                if toxic_labels:
-
-                    cols = st.columns(3)
-
-                    for i, label in enumerate(toxic_labels):
-                        cols[i % 3].error(label.upper())
-
-                else:
-                    st.info("No toxic labels detected.")
-
-                # Probability Scores
-                if probability is not None:
-
-                    st.markdown("---")
-                    if selected_model in ["BERT", "DistilBERT"]:
-                        st.subheader("Transformer Confidence Scores")
+                    # Detected Labels
+                    st.subheader("Detected Labels")
+    
+                    if toxic_labels:
+    
+                        cols = st.columns(3)
+    
+                        for i, label in enumerate(toxic_labels):
+                            cols[i % 3].error(label.upper())
+    
                     else:
-                        st.subheader("ML Confidence Scores")
-
-                    probability = np.asarray(probability)
-
-                    if probability.ndim == 2: probability = probability[0]
-
-                    for label, score in zip(LABELS, probability):
-                        st.write(f"**{label.title()}**")
-                        st.progress(float(score))
-                        st.write(f"{score:.2%}")
-                else:
-                    st.info("Confidence scores are not available for this model.")
+                        st.info("No toxic labels detected.")
+    
+                    # Probability Scores
+                    if probability is not None:
+    
+                        st.markdown("---")
+                        if selected_model in ["BERT", "DistilBERT"]:
+                            st.subheader("Transformer Confidence Scores")
+                        else:
+                            st.subheader("ML Confidence Scores")
+    
+                        probability = np.asarray(probability)
+    
+                        if probability.ndim == 2: probability = probability[0]
+    
+                        for label, score in zip(LABELS, probability):
+                            st.write(f"**{label.title()}**")
+                            st.progress(float(score))
+                            st.write(f"{score:.2%}")
+                    else:
+                        st.info("Confidence scores are not available for this model.")
 
             except Exception as e:
                 st.error(f"Error while predicting:\n\n{str(e)}")
