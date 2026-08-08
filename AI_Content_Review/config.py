@@ -4,15 +4,22 @@
 # ============================
 
 import os
+from pathlib import Path
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = Path(__file__).resolve().parent
 
-# ================================
-# Transformer Models
-# ================================
+BERT_MODEL_PATH = str(BASE_DIR / "models" / "bert")
 
-BERT_MODEL_PATH = "models/bert"
-DISTILBERT_MODEL_PATH = "models/distilbert"
+DISTILBERT_MODEL_PATH = str(BASE_DIR / "models" / "distilbert")
+
+# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# # ================================
+# # Transformer Models
+# # ================================
+
+# BERT_MODEL_PATH = "models/bert"
+# DISTILBERT_MODEL_PATH = "models/distilbert"
 
 MAX_LENGTH = 128
 
