@@ -8,6 +8,7 @@ plotly
 seaborn
 wordcloud
 torch
+torchvision
 transformers
 xgboost
 nltk
