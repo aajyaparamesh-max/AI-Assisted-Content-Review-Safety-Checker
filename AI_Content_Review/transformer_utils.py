@@ -17,11 +17,13 @@ import config
 DEVICE = torch.device(
     "cuda" if torch.cuda.is_available() else "cpu"
 )
-import os
+# ----------------------DEBUG-----------------------
+# import os
 
-st.write(config.BERT_MODEL_PATH)
+# st.write(config.BERT_MODEL_PATH)
 
-st.write(os.path.exists(config.BERT_MODEL_PATH))
+# st.write(os.path.exists(config.BERT_MODEL_PATH))
+#---------------------------------------------------
 
 # ==========================================
 # Load BERT
