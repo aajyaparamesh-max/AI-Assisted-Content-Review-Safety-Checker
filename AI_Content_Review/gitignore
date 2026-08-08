@@ -1,0 +1,9 @@
+__pycache__/
+models/bert/*
+models/distilbert/*
+
+!models/bert/.gitkeep
+!models/distilbert/.gitkeep
+
+__pycache__/
+.ipynb_checkpoints/
