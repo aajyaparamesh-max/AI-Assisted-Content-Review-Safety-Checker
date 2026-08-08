@@ -53,12 +53,12 @@ def download_models():
                     quiet=False,
                     use_cookies=False
                 )    
-            # # Verify download
-            # if bert_file.exists():
+            # Verify download
+            if not bert_file.exists():
             #     st.success("✅ BERT downloaded successfully.")
             # else:
-            #     st.error("❌ BERT download completed, but model.safetensors was not found.")
-            #     st.stop()
+                st.error("❌ BERT download completed, but model.safetensors was not found.")
+                st.stop()
     
         except Exception as e:    
             st.error("❌ Failed to download BERT model.")    
@@ -84,11 +84,11 @@ def download_models():
                     
                     use_cookies=False
                 )    
-            # if distilbert_file.exists():
+            if not distilbert_file.exists():
             #     st.success("✅ DistilBERT downloaded successfully.")
             # else:
-            #     st.error("❌ DistilBERT download completed, but model.safetensors was not found.")
-            #     st.stop()    
+                st.error("❌ DistilBERT download completed, but model.safetensors was not found.")
+                st.stop()    
         except Exception as e:    
             st.error("❌ Failed to download DistilBERT model.")    
             st.exception(e)    
