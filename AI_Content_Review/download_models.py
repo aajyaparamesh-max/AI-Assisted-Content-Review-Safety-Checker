@@ -99,8 +99,8 @@ def download_models():
     # https://drive.google.com/file/d/1QY0nn_jWD2hw1gRM2HmPq3aAIwbRKsBv/view?usp=drive_link -- DISTILBERT
     # https://drive.google.com/file/d/1vL65T3OIZzhkLmOaSEbIMjsy5iNqj09E/view?usp=drive_link -- csv
     FILES = {
-        "bert/model.safetensors": "1RX_RJhwe_0DBg2Sqk_lBd78DW1Jws4hE",
-        "distilbert/model.safetensors": "1QY0nn_jWD2hw1gRM2HmPq3aAIwbRKsBv",
+        "models/bert/model.safetensors": "1RX_RJhwe_0DBg2Sqk_lBd78DW1Jws4hE",
+        "models/distilbert/model.safetensors": "1QY0nn_jWD2hw1gRM2HmPq3aAIwbRKsBv",
         "data/processed_train.csv": "1vL65T3OIZzhkLmOaSEbIMjsy5iNqj09E"
     }
     for relative_path, file_id in FILES.items():
