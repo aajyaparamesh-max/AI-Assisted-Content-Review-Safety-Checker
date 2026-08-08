@@ -8,22 +8,13 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 
+# ================================
+# Transformer Models
+# ================================
 BERT_MODEL_PATH = str(BASE_DIR / "models" / "bert")
-
 DISTILBERT_MODEL_PATH = str(BASE_DIR / "models" / "distilbert")
 
-# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-# # ================================
-# # Transformer Models
-# # ================================
-
-# BERT_MODEL_PATH = "models/bert"
-# DISTILBERT_MODEL_PATH = "models/distilbert"
-
 MAX_LENGTH = 128
-
-
 MODEL_PATHS = {
 
     "Logistic Regression":
