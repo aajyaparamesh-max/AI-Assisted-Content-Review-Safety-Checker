@@ -111,19 +111,20 @@ def download_models():
                 quiet=False
             )
             st.success(str(BASE_DIR / relative_path))
+
+    # ============================= DEBUG =============================
+    # st.write("========== DEBUG ==========")
     
-    st.write("========== DEBUG ==========")
+    # st.write("MODELS_DIR:", MODELS_DIR)
     
-    st.write("MODELS_DIR:", MODELS_DIR)
+    # st.write("MODELS exists:", MODELS_DIR.exists())
     
-    st.write("MODELS exists:", MODELS_DIR.exists())
+    # st.write("BERT exists:", BERT_DIR.exists())
     
-    st.write("BERT exists:", BERT_DIR.exists())
+    # st.write("DISTILBERT exists:", DISTILBERT_DIR.exists())
     
-    st.write("DISTILBERT exists:", DISTILBERT_DIR.exists())
+    # if BERT_DIR.exists():
+    #     st.write("BERT files:", os.listdir(BERT_DIR))
     
-    if BERT_DIR.exists():
-        st.write("BERT files:", os.listdir(BERT_DIR))
-    
-    if DISTILBERT_DIR.exists():
-        st.write("DISTILBERT files:", os.listdir(DISTILBERT_DIR))
+    # if DISTILBERT_DIR.exists():
+    #     st.write("DISTILBERT files:", os.listdir(DISTILBERT_DIR))
