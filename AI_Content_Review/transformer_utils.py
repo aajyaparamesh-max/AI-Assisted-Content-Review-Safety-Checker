@@ -17,6 +17,7 @@ import config
 DEVICE = torch.device(
     "cuda" if torch.cuda.is_available() else "cpu"
 )
+import os
 
 st.write(config.BERT_MODEL_PATH)
 
