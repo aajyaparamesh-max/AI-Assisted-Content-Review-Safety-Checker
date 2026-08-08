@@ -19,7 +19,6 @@ DISTILBERT_DIR.mkdir(exist_ok=True)
 
 # -------------------------------------------------------
 # Google Drive Folder URLs
-# Replace with your own folder links
 # -------------------------------------------------------
 
 # https://drive.google.com/drive/folders/1-uauPsy_0YO-975Wq_rTkRvhNM6hSR58?usp=sharing
@@ -29,12 +28,9 @@ BERT_FOLDER_URL = "https://drive.google.com/drive/folders/1-uauPsy_0YO-975Wq_rTk
 DISTILBERT_FOLDER_URL = "https://drive.google.com/drive/folders/1EKZKc228ud7ImnIu4NcaLdXLwBmW1wHv"
 
 # https://drive.google.com/file/d/1vL65T3OIZzhkLmOaSEbIMjsy5iNqj09E/view?usp=drive_link
-
-
 FILES = {
     "data/processed_train.csv": "1vL65T3OIZzhkLmOaSEbIMjsy5iNqj09E",
 }
-
 
 # -------------------------------------------------------
 # Download Function
@@ -67,34 +63,25 @@ def download_models():
 
     if not bert_file.exists():
 
-        try:
-    
+        try:    
             with st.spinner("Downloading BERT model (first run only)..."):
-    
                 gdown.download_folder(
                     url=BERT_FOLDER_URL,
-                    output=str(MODELS_DIR),   # Recommended
+                    output=str(BERT_DIR), 
                     quiet=False,
                     use_cookies=False
-                )
-    
+                )    
             # Verify download
             if bert_file.exists():
                 st.success("✅ BERT downloaded successfully.")
-                st.success(str(MODELS_DIR))
-                st.success(str(BERT_DIR))
             else:
                 st.error("❌ BERT download completed, but model.safetensors was not found.")
                 st.stop()
     
-        except Exception as e:
-    
-            st.error("❌ Failed to download BERT model.")
-    
-            st.exception(e)          # Shows full traceback in Streamlit
-    
-            st.stop()
-    
+        except Exception as e:    
+            st.error("❌ Failed to download BERT model.")    
+            st.exception(e)          # Shows full traceback in Streamlit    
+            st.stop()    
     else:
     
         st.info("✅ BERT already exists.")
@@ -106,42 +93,29 @@ def download_models():
     distilbert_file = DISTILBERT_DIR / "model.safetensors"
 
     if not distilbert_file.exists():
-
-        try:
-    
-            with st.spinner("Downloading DistilBERT model (first run only)..."):
-    
+        try:    
+            with st.spinner("Downloading DistilBERT model (first run only)..."):    
                 gdown.download_folder(
                     url=DISTILBERT_FOLDER_URL,
-                    output=str(MODELS_DIR),
+                    output=str(DISTILBERT_DIR),
                     quiet=False,
                     use_cookies=False
-                )
-    
+                )    
             if distilbert_file.exists():
                 st.success("✅ DistilBERT downloaded successfully.")
-                st.success(str(MODELS_DIR))
-                st.success(str(DISTILBERT_DIR))
             else:
                 st.error("❌ DistilBERT download completed, but model.safetensors was not found.")
-                st.stop()
-    
-        except Exception as e:
-    
-            st.error("❌ Failed to download DistilBERT model.")
-    
-            st.exception(e)
-    
+                st.stop()    
+        except Exception as e:    
+            st.error("❌ Failed to download DistilBERT model.")    
+            st.exception(e)    
             st.stop()
-    
-    else:
-    
+    else:    
         st.info("✅ DistilBERT already exists.")
 
     # -------------------------------
     # processed_train.csv
     # -------------------------------
-
        
     for relative_path, file_id in FILES.items():
         file_path = BASE_DIR / relative_path
