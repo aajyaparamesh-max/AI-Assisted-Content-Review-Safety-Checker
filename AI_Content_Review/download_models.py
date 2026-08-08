@@ -48,21 +48,55 @@ def download_models():
 
     bert_file = BERT_DIR / "model.safetensors"
 
+    # if not bert_file.exists():
+
+    #     with st.spinner("Downloading BERT model (first run only)..."):
+
+    #         gdown.download_folder(
+    #             url=BERT_FOLDER_URL,
+    #             output=str(MODELS_DIR),
+    #             quiet=False,
+    #             use_cookies=False
+    #         )
+
+    #     st.success("✅ BERT downloaded successfully.")
+
+    # else:
+
+    #     st.info("✅ BERT already exists.")
+
     if not bert_file.exists():
 
-        with st.spinner("Downloading BERT model (first run only)..."):
-
-            gdown.download_folder(
-                url=BERT_FOLDER_URL,
-                output=str(MODELS_DIR),
-                quiet=False,
-                use_cookies=False
-            )
-
-        st.success("✅ BERT downloaded successfully.")
-
+        try:
+    
+            with st.spinner("Downloading BERT model (first run only)..."):
+    
+                gdown.download_folder(
+                    url=BERT_FOLDER_URL,
+                    output=str(MODELS_DIR),   # Recommended
+                    quiet=False,
+                    use_cookies=False
+                )
+    
+            # Verify download
+            if bert_file.exists():
+                st.success("✅ BERT downloaded successfully.")
+                st.success(str(MODELS_DIR))
+                st.success(str(BERT_DIR))
+            else:
+                st.error("❌ BERT download completed, but model.safetensors was not found.")
+                st.stop()
+    
+        except Exception as e:
+    
+            st.error("❌ Failed to download BERT model.")
+    
+            st.exception(e)          # Shows full traceback in Streamlit
+    
+            st.stop()
+    
     else:
-
+    
         st.info("✅ BERT already exists.")
 
     # -------------------------------
@@ -73,21 +107,42 @@ def download_models():
 
     if not distilbert_file.exists():
 
-        with st.spinner("Downloading DistilBERT model (first run only)..."):
-
-            gdown.download_folder(
-                url=DISTILBERT_FOLDER_URL,
-                output=str(MODELS_DIR),
-                quiet=False,
-                use_cookies=False
-            )
-
-        st.success("✅ DistilBERT downloaded successfully.")
-
+        try:
+    
+            with st.spinner("Downloading DistilBERT model (first run only)..."):
+    
+                gdown.download_folder(
+                    url=DISTILBERT_FOLDER_URL,
+                    output=str(MODELS_DIR),
+                    quiet=False,
+                    use_cookies=False
+                )
+    
+            if distilbert_file.exists():
+                st.success("✅ DistilBERT downloaded successfully.")
+                st.success(str(MODELS_DIR))
+                st.success(str(DISTILBERT_DIR))
+            else:
+                st.error("❌ DistilBERT download completed, but model.safetensors was not found.")
+                st.stop()
+    
+        except Exception as e:
+    
+            st.error("❌ Failed to download DistilBERT model.")
+    
+            st.exception(e)
+    
+            st.stop()
+    
     else:
-
+    
         st.info("✅ DistilBERT already exists.")
 
+    # -------------------------------
+    # processed_train.csv
+    # -------------------------------
+
+       
     for relative_path, file_id in FILES.items():
         file_path = BASE_DIR / relative_path
         file_path.parent.mkdir(parents=True, exist_ok=True)
@@ -98,3 +153,4 @@ def download_models():
                 str(file_path),
                 quiet=False
             )
+            st.success(str(BASE_DIR / relative_path))
