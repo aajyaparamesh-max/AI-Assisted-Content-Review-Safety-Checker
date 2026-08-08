@@ -50,4 +50,4 @@ import pandas as pd
 
 def load_results():
 
-    return pd.read_excel(MODEL_RESULTS)
+    return pd.read_csv(MODEL_RESULTS)
