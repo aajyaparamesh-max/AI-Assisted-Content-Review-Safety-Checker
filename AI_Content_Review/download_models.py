@@ -54,7 +54,7 @@ def download_models():
 
             gdown.download_folder(
                 url=BERT_FOLDER_URL,
-                output=str(BERT_DIR),
+                output=str(MODELS_DIR),
                 quiet=False,
                 use_cookies=False
             )
@@ -77,7 +77,7 @@ def download_models():
 
             gdown.download_folder(
                 url=DISTILBERT_FOLDER_URL,
-                output=str(DISTILBERT_DIR),
+                output=str(MODELS_DIR),
                 quiet=False,
                 use_cookies=False
             )
