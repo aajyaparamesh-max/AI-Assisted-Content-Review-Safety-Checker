@@ -18,6 +18,10 @@ DEVICE = torch.device(
     "cuda" if torch.cuda.is_available() else "cpu"
 )
 
+st.write(config.BERT_MODEL_PATH)
+
+st.write(os.path.exists(config.BERT_MODEL_PATH))
+
 # ==========================================
 # Load BERT
 # ==========================================
