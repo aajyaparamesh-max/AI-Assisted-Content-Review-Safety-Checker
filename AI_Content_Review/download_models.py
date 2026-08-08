@@ -44,33 +44,15 @@ def download_models():
 
     bert_file = BERT_DIR / "model.safetensors"
 
-    # if not bert_file.exists():
-
-    #     with st.spinner("Downloading BERT model (first run only)..."):
-
-    #         gdown.download_folder(
-    #             url=BERT_FOLDER_URL,
-    #             output=str(MODELS_DIR),
-    #             quiet=False,
-    #             use_cookies=False
-    #         )
-
-    #     st.success("✅ BERT downloaded successfully.")
-
-    # else:
-
-    #     st.info("✅ BERT already exists.")
-
     if not bert_file.exists():
-
         try:    
-            with st.spinner("Downloading BERT model (first run only)..."):
-                gdown.download_folder(
-                    url=BERT_FOLDER_URL,
-                    output=str(BERT_DIR), 
-                    quiet=False,
-                    use_cookies=False
-                )    
+            #with st.spinner("Downloading BERT model (first run only)..."):
+            gdown.download_folder(
+                url=BERT_FOLDER_URL,
+                output=str(BERT_DIR), 
+                quiet=False,
+                use_cookies=False
+            )    
             # Verify download
             if bert_file.exists():
                 st.success("✅ BERT downloaded successfully.")
@@ -82,8 +64,7 @@ def download_models():
             st.error("❌ Failed to download BERT model.")    
             st.exception(e)          # Shows full traceback in Streamlit    
             st.stop()    
-    else:
-    
+    else:    
         st.info("✅ BERT already exists.")
 
     # -------------------------------
@@ -94,13 +75,15 @@ def download_models():
 
     if not distilbert_file.exists():
         try:    
-            with st.spinner("Downloading DistilBERT model (first run only)..."):    
-                gdown.download_folder(
-                    url=DISTILBERT_FOLDER_URL,
-                    output=str(DISTILBERT_DIR),
-                    quiet=False,
-                    use_cookies=False
-                )    
+            #with st.spinner("Downloading DistilBERT model (first run only)..."):    
+            gdown.download_folder(
+                url=DISTILBERT_FOLDER_URL,
+                output=str(DISTILBERT_DIR),
+                quiet=False,
+
+                
+                use_cookies=False
+            )    
             if distilbert_file.exists():
                 st.success("✅ DistilBERT downloaded successfully.")
             else:
