@@ -1,0 +1,10 @@
+Parameter,Value
+Model,DistilBERT
+Epochs,3
+Batch Size,64
+Learning Rate,2e-05
+Weight Decay,0.01
+Max Length,128
+Frozen Layers,3
+Warmup Steps,598
+Validation Loss,0.04583412528463559
