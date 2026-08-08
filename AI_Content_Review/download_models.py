@@ -100,17 +100,18 @@ def download_models():
     # processed_train.csv
     # -------------------------------
        
-    # for relative_path, file_id in FILES.items():
-    #     file_path = BASE_DIR / relative_path
-    #     file_path.parent.mkdir(parents=True, exist_ok=True)
+    for relative_path, file_id in FILES.items():
+        file_path = BASE_DIR / relative_path
+        file_path.parent.mkdir(parents=True, exist_ok=True)
 
-    #     if not file_path.exists():
-    #         gdown.download(
-    #             f"https://drive.google.com/uc?id={file_id}",
-    #             str(file_path),
-    #             quiet=False
-    #         )
-            # st.success(str(BASE_DIR / relative_path))
+        if not file_path.exists():
+            gdown.download(
+                f"https://drive.google.com/uc?id={file_id}",
+                str(file_path),
+                quiet=False
+            )
+        # st.success(str(BASE_DIR / relative_path))
+    
 
     st.success("✅ Models downloaded successfully.")
 
