@@ -326,6 +326,24 @@ def predict_ml(comment, model_name):
 
             probs = model.decision_function(X)
 
+            scores = model.decision_function(X)
+
+            scores = np.asarray(scores)
+
+            # ---------------------------------
+            # OneVsRestClassifier
+            # Shape: (1, 6)
+            # ---------------------------------
+            if scores.ndim == 2:
+
+                scores = scores[0]
+
+            # ---------------------------------
+            # Convert decision scores to
+            # probability-like confidence
+            # ---------------------------------
+            scores = np.clip(scores, -20, 20)
+            probability = 1 / (1 + np.exp(-scores))
     except Exception:
 
         probability = None
