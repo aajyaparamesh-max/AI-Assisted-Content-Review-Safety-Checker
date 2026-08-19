@@ -322,6 +322,10 @@ def predict_ml(comment, model_name):
 
                     probability = probs[0]
 
+        elif hasattr(model, "decision_function"):
+
+            probs = model.decision_function(X)
+
     except Exception:
 
         probability = None
